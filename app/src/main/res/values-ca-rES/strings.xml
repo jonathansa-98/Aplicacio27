@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplicacio0</string>
+    <string name="app_title">Aplicació</string>
+    <string name="btn_jugar">Jugar</string>
+    <string name="btn_config">Configurar</string>
+    <string name="btn_acerca">Sobre</string>
+    <string name="btn_salir">Exit</string>
+    <string name="text_acercade">Aquesta aplicació ha sigut desenvolupada com exemple del módul de
+        Diseny de Interficies Web per demostrar com es poden llançar noves activitats emprant la
+        activitat principal</string>
+    <string name="menu_item_config">Configuració</string>
+    <string name="menu_acercaDe">Sobre...</string>
+    <string name="menu_cercar">Cercar</string>
+    <string name="pa_key">preferencies_principal</string>
+    <string name="pa0_title">Reproduir efectes de so</string>
+    <string name="pa0_key">efectes</string>
+    <string name="pa0_summary">Es reprodueixen els efectes de so</string>
+    <string name="pa1_title">Reproduir música</string>
+    <string name="pa1_key">musica</string>
+    <string name="pa1_summary">Es reprodueix música de fons</string>
+    <string name="pa2_title">Tipus de gràfics</string>
+    <string name="pa2_key">graficos</string>
+    <string name="pa2_summary">Escogueix la representació de gràfics</string>
+    <string name="pa3_title">Nombre de fragments</string>
+    <string name="pa3_key">fragmentos</string>
+    <string name="pa3_summary">En cuants fragments es divideix un asteroide</string>
+    <string name="pre_category_title">MODO MULTIJUGADOR</string>
+    <string name="pa4_key">multijugador</string>
+    <string name="pa4_title">Activar modo multijugador</string>
+    <string name="pa5_key">max_jugadores</string>
+    <string name="pa5_title">Máximo de jugadores</string>
+    <string name="pa6_key">conexion</string>
+    <string name="pa6_title">Tipo de conexión</string>
+    <string name="layout_punt_subtitol">Altre texte</string>
+    <string name="pre_category2_title">MODO DE JUEGO</string>
+    <string name="pa7_key">controles</string>
+    <string name="pa7_summary">Canvia el sistema de controls de l\'aplicacio</string>
+    <string name="pa7_title">Controls</string>
+</resources>

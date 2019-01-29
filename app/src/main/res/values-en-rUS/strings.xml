@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplicacio0</string>
+    <string name="app_title">Aplication</string>
+    <string name="btn_jugar">Play</string>
+    <string name="btn_config">Settings</string>
+    <string name="btn_acerca">About</string>
+    <string name="btn_salir">Exit</string>
+    <string name="text_acercade">This application has ben developed as an example of the Web Interface
+        Design module to prove how can new activities be launched via the main activity.
+        </string>
+    <string name="menu_item_config">Settings</string>
+    <string name="menu_acercaDe">About...</string>
+    <string name="menu_cercar">Search</string>
+    <string name="pa_key">preferencies_principal</string>
+    <string name="pa0_title">Play sound effects</string>
+    <string name="pa0_key">sound effects</string>
+    <string name="pa0_summary">Plays sound effects in the game</string>
+    <string name="pa1_title">Play music</string>
+    <string name="pa1_key">musica</string>
+    <string name="pa1_summary">Plays music in the background</string>
+    <string name="pa2_title">Graphic types</string>
+    <string name="pa2_key">graficos</string>
+    <string name="pa2_summary">Choose the representation of graphics</string>
+    <string name="pa3_title">Number of fragments</string>
+    <string name="pa3_key">fragmentos</string>
+    <string name="pa3_summary">How many fragments the asteroid divides</string>
+    <string name="pre_category_title">MODO MULTIJUGADOR</string>
+    <string name="pa4_key">multijugador</string>
+    <string name="pa4_title">Activar modo multijugador</string>
+    <string name="pa5_key">max_jugadores</string>
+    <string name="pa5_title">Máximo de jugadores</string>
+    <string name="pa6_key">conexion</string>
+    <string name="pa6_title">Tipo de conexión</string>
+    <string name="layout_punt_subtitol">Altre texte</string>
+    <string name="pre_category2_title">MODO DE JUEGO</string>
+    <string name="pa7_key">controles</string>
+    <string name="pa7_summary">Change the controls of the game</string>
+    <string name="pa7_title">Controls</string>
+</resources>

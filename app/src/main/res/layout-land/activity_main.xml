@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/titol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:padding="60dp"
+            android:text="Aplicación"
+            android:textSize="25dp" />
+
+        <android.gesture.GestureOverlayView
+            android:id="@+id/gestures"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeOffset="800"
+            android:gestureStrokeType="multiple" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:stretchColumns='"*"'>
+
+        <TableRow
+            android:id="@+id/tablerow_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button_jugar"
+                style="@style/tema_aplicacio.btn"
+                android:layout_width="250dp"
+                android:text="Jugar" />
+
+            <Button
+                android:id="@+id/button_config"
+                style="@style/tema_aplicacio.btn"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Configurar" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tablerow_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button_acerca"
+                style="@style/tema_aplicacio.btn"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Acerca de" />
+
+            <Button
+                android:id="@+id/button_salir"
+                style="@style/tema_aplicacio.btn"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Salir" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

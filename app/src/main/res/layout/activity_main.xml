@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/titol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="50dp"
+        android:text="@string/app_title"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/button_jugar"
+        style="@style/tema_aplicacio.btn"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/btn_jugar" />
+
+    <Button
+        android:id="@+id/button_config"
+        style="@style/tema_aplicacio.btn"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/btn_config" />
+
+    <Button
+        android:id="@+id/button_acerca"
+        style="@style/tema_aplicacio.btn"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:layout_gravity="center_horizontal"
+        android:onClick="llancarAcercaDe"
+        android:text="@string/btn_acerca" />
+
+    <Button
+        android:id="@+id/button_salir"
+        style="@style/tema_aplicacio.btn"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/btn_salir" />
+
+    <android.gesture.GestureOverlayView
+        android:id="@+id/gestures"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadeOffset="800"
+        android:gestureStrokeType="multiple" />
+</LinearLayout>
