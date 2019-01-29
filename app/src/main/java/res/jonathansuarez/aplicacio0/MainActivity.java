@@ -247,7 +247,22 @@ public class MainActivity extends Activity implements View.OnClickListener, View
 
     private void llancarJoc(View view) {
         Intent i = new Intent(this, Joc.class);
-        startActivity(i);
+        startActivityForResult(i,1234);
+    }
+
+    // Metode que es crida de forma automatica quan finalitza l'activitat secundaria.
+    // Permet llegir les dades retornades.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1234 && resultCode == RESULT_OK && data != null) {
+            int puntuacio = data.getExtras().getInt("puntuacio");
+            String nom = "Jo";
+            // Millor si ho llegim des d'un dialeg o una nova activitat
+            // AlertDialog.Builder
+            magatzem.guardarPuntuacio(puntuacio, nom, System.currentTimeMillis());
+            llancarPuntuacions(null);
+        }
     }
 
     public void llancarConfig(View view) {

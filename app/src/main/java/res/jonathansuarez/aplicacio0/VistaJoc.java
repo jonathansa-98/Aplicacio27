@@ -1,6 +1,8 @@
 package res.jonathansuarez.aplicacio0;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -16,6 +18,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -68,6 +71,10 @@ public class VistaJoc extends View implements SensorEventListener {
 
     private SensorManager mSensorManager;
 
+    // variable que conte la puntuacio del joc
+    private int puntuacio = 0;
+    private Activity pare;
+
     public VistaJoc(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -80,8 +87,6 @@ public class VistaJoc extends View implements SensorEventListener {
         }
 
         Drawable drawableNau, drawableMissil;
-        //drawableAsteroide = context.getResources().getDrawable(R.drawable.asteroide1);
-        //if (pref.getString("graficos", "1").equals("0")) {
         if (pref.getString(getResources().getString(R.string.pa2_key), "1").equals("0")) {
             setLayerType(View.LAYER_TYPE_SOFTWARE,null);
             //Gràfic vectorial nau
@@ -193,11 +198,17 @@ public class VistaJoc extends View implements SensorEventListener {
             if(!missils.isEmpty()){
                 for (int u = 0; u < asteroides.size(); u++){
                     if(missils.get(i).verificaColisio(asteroides.get(u))){
-                        destrueixAsteroide(u);
                         missils.remove(i);
+                        destrueixAsteroide(u);
                         break;
                     }
                 }
+            }
+        }
+        // Si un asteroide choca amb la nau finalitzar joc.
+        for (Grafic asteroide:asteroides) {
+            if (asteroide.verificaColisio(nau)) {
+                sortir();
             }
         }
     }
@@ -326,9 +337,14 @@ public class VistaJoc extends View implements SensorEventListener {
             }
         }
         asteroides.remove(i);
+        puntuacio += 1000;
         //missilActiu=false;
         if (pref.getBoolean(getResources().getString(R.string.pa0_key), true)) {
             soundPool.play(idExplosio, 1, 1, 0, 0, 1);
+        }
+        // Si no queda cap asteroide en pantalla finalitzar partida
+        if (asteroides.isEmpty()) {
+            sortir();
         }
     }
 
@@ -385,5 +401,19 @@ public class VistaJoc extends View implements SensorEventListener {
 
     protected SensorManager getMSensorManager(){
         return mSensorManager;
+    }
+
+    public void setPare(Activity pare) {
+        this.pare = pare;
+    }
+
+    // Métode que permet finalitzar el joc retornant la puntuació
+    private void sortir() {
+        Bundle bundle = new Bundle();
+        bundle.putInt("puntuacio", puntuacio);
+        Intent intent = new Intent();
+        intent.putExtras(bundle);
+        pare.setResult(Activity.RESULT_OK, intent);
+        pare.finish();
     }
 }
