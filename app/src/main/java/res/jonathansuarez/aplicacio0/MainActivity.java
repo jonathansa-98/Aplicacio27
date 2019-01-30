@@ -91,6 +91,8 @@ public class MainActivity extends Activity implements View.OnClickListener, View
         if (!llibreria.load()) finish();
         GestureOverlayView gesturesView = findViewById(R.id.gestures);
         gesturesView.addOnGesturePerformedListener(this);
+
+        magatzem = new MagatzemPuntuacionsPreferencies(this);
     }
 
     @Override
