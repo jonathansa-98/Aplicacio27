@@ -93,7 +93,8 @@ public class MainActivity extends Activity implements View.OnClickListener, View
         gesturesView.addOnGesturePerformedListener(this);
 
         //magatzem = new MagatzemPuntuacionsPreferencies(this); // en preferencies
-        magatzem = new MagatzemPuntuacionsFitxerIntern(this); // en fitxer intern
+        //magatzem = new MagatzemPuntuacionsFitxerIntern(this); // en fitxer intern
+        magatzem = new MagatzemPuntuacionsFitxerExtern(this); // en fitxer extern
     }
 
     @Override
