@@ -191,16 +191,13 @@ public class VistaJoc extends View implements SensorEventListener {
             missils.get(i).incrementaPos(retard);
             double aux = tempsMissils.get(i) - retard;
             tempsMissils.set(i, (int)aux);
-            if(aux < 1){
+            if(aux < 1){ //canviar a get(i).intValue()<0
                 missils.remove(i);
                 tempsMissils.remove(i);
                 break; // para el bucle porque sino en el bucle de abajo salta ArrayIndexOutOfBounds en la verificacio.
             }
-            if(!missils.isEmpty()){
+            if(!missils.isEmpty()){ // canviar a else
                 for (int u = 0; u < asteroides.size(); u++){
-                    /*try {
-
-                    }*/
                     if(missils.get(i).verificaColisio(asteroides.get(u))){
                         missils.remove(i);
                         destrueixAsteroide(u);

@@ -31,7 +31,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
     private Button btnConfig;
     private Button bAcercaDe;
     private Button bSortir;
-    public static MagatzemPuntuacions magatzem = new MagatzemPuntuacionsArray();
+    public static MagatzemPuntuacions magatzem;
 
     // Animacio
     private Animation animacio_gir;
@@ -92,10 +92,12 @@ public class MainActivity extends Activity implements View.OnClickListener, View
         GestureOverlayView gesturesView = findViewById(R.id.gestures);
         gesturesView.addOnGesturePerformedListener(this);
 
+        // magatzem = new MagatzemPuntuacionsArray();
         // magatzem = new MagatzemPuntuacionsPreferencies(this); // en preferencies
         // magatzem = new MagatzemPuntuacionsFitxerIntern(this); // en fitxer intern
         // magatzem = new MagatzemPuntuacionsFitxerExtern(this); // en fitxer extern
-        magatzem = new MagatzemPuntuacionsXML_SAX(this); // en fitxer XML-SAX
+        // magatzem = new MagatzemPuntuacionsXML_SAX(this); // en fitxer XML-SAX
+        magatzem = new MagatzemPuntuacionsGson(); // en fitxer JSON
     }
 
     @Override
