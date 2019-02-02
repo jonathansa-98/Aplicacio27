@@ -37,4 +37,8 @@
     <string name="pa7_key">controles</string>
     <string name="pa7_summary">Cambia el sistema de controles de la aplicacion</string>
     <string name="pa7_title">Controles</string>
+    <string name="pre_category3_title">Modo de guardado</string>
+    <string name="pa8_key">guardado</string>
+    <string name="pa8_summary">Donde desea que las puntuaciones se guarden</string>
+    <string name="pa8_title">Guardado de puntuaciones</string>
 </resources>

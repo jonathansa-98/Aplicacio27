@@ -55,4 +55,13 @@
             android:summary="@string/pa7_summary"
             android:title="@string/pa7_title" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pre_category3_title">
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/tipusGuardat"
+            android:entryValues="@array/tipusGuardatValors"
+            android:key="@string/pa8_key"
+            android:summary="@string/pa8_summary"
+            android:title="@string/pa8_title" />
+    </PreferenceCategory>
 </PreferenceScreen>

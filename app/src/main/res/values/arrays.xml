@@ -28,4 +28,20 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string-array name="tipusGuardat">
+        <item>Array</item>
+        <item>Preferencies</item>
+        <item>Fitxer intern</item>
+        <item>Fitxer extern</item>
+        <item>Fitxer XML SAX</item>
+        <item>Fitxer GSON</item>
+    </string-array>
+    <string-array name="tipusGuardatValors">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>

@@ -91,19 +91,28 @@ public class MainActivity extends Activity implements View.OnClickListener, View
         if (!llibreria.load()) finish();
         GestureOverlayView gesturesView = findViewById(R.id.gestures);
         gesturesView.addOnGesturePerformedListener(this);
-
-        // magatzem = new MagatzemPuntuacionsArray();
-        // magatzem = new MagatzemPuntuacionsPreferencies(this); // en preferencies
-        // magatzem = new MagatzemPuntuacionsFitxerIntern(this); // en fitxer intern
-        // magatzem = new MagatzemPuntuacionsFitxerExtern(this); // en fitxer extern
-        // magatzem = new MagatzemPuntuacionsXML_SAX(this); // en fitxer XML-SAX
-        magatzem = new MagatzemPuntuacionsGson(); // en fitxer JSON
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        // Toast.makeText(this, "onStart", Toast.LENGTH_SHORT).show();
+        // On es guardara.
+        magatzem = getModeGuardat();
+        //Toast.makeText(this, "onStart", Toast.LENGTH_SHORT).show();
+    }
+
+    private MagatzemPuntuacions getModeGuardat() {
+        String val = pref.getString(getResources().getString(R.string.pa8_key), "0");
+        int opcio = Integer.parseInt(val);
+        switch (opcio) {
+            case 0: return new MagatzemPuntuacionsArray();
+            case 1: return new MagatzemPuntuacionsPreferencies(MainActivity.this);
+            case 2: return new MagatzemPuntuacionsFitxerIntern(MainActivity.this);
+            case 3: return new MagatzemPuntuacionsFitxerExtern(MainActivity.this);
+            case 4: return new MagatzemPuntuacionsXML_SAX(MainActivity.this);
+            case 5: return new MagatzemPuntuacionsGson();
+        }
+        return new MagatzemPuntuacionsArray();
     }
 
     @Override
@@ -117,7 +126,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
                 mp.start();
             }*/
         }
-        // Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
     }
 
     @Override
