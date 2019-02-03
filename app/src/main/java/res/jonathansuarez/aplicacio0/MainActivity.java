@@ -111,6 +111,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
             case 3: return new MagatzemPuntuacionsFitxerExtern(MainActivity.this);
             case 4: return new MagatzemPuntuacionsXML_SAX(MainActivity.this);
             case 5: return new MagatzemPuntuacionsGson();
+            case 6: return new MagatzemPuntuacionsJson();
         }
         return new MagatzemPuntuacionsArray();
     }
