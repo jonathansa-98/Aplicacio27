@@ -37,6 +37,7 @@
         <item>Fitxer GSON</item>
         <item>Fitxer JSON</item>
         <item>Fitxer SQLite</item>
+        <item>Fitxer SQLite Relacional</item>
     </string-array>
     <string-array name="tipusGuardatValors">
         <item>0</item>
@@ -47,5 +48,6 @@
         <item>5</item>
         <item>6</item>
         <item>7</item>
+        <item>8</item>
     </string-array>
 </resources>

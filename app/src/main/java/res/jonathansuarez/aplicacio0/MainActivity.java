@@ -113,6 +113,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
             case 5: return new MagatzemPuntuacionsGson();
             case 6: return new MagatzemPuntuacionsJson();
             case 7: return new MagatzemPuntuacionsSQLite(MainActivity.this);
+            case 8: return new MagatzemPuntuacionsSQLiteRelacional(MainActivity.this);
         }
         return new MagatzemPuntuacionsArray();
     }
