@@ -18,8 +18,11 @@ public class MagatzemPuntuacionsSQLite extends SQLiteOpenHelper implements Magat
     public void onCreate(SQLiteDatabase db) {
         // Aqui s'han de crear totes les taules de la BD, i inicialitzar les dades si es necessari.
         // CREATE TABLE nom_taula(nom_columna tipus [atributs], ... )
-        db.execSQL("CREATE TABLE vpuntuacions (" + "_id INTEGER PRIMARY " +
-                "KEY AUTOINCREMENT," + "punts INTEGER, nom TEXT, data LONG)");
+        db.execSQL("CREATE TABLE vpuntuacions (" +
+                        "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "punts INTEGER, " +
+                        "nom TEXT, " +
+                        "data LONG)");
     }
 
     @Override

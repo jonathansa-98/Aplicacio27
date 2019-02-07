@@ -12,7 +12,7 @@ import java.util.Vector;
 public class MagatzemPuntuacionsSQLiteRelacional extends SQLiteOpenHelper implements MagatzemPuntuacions {
 
     public MagatzemPuntuacionsSQLiteRelacional(Context context) {
-        super(context,"puntuacions",null,1);
+        super(context,"puntuacions",null,2);
     }
 
     @Override
@@ -21,20 +21,44 @@ public class MagatzemPuntuacionsSQLiteRelacional extends SQLiteOpenHelper implem
         // Aqui s'han de crear totes les taules de la BD, i inicialitzar les dades si es necessari.
         // CREATE TABLE nom_taula(nom_columna tipus [atributs], ... )
         db.execSQL("CREATE TABLE usuaris ( " +
-                        "usu_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "nom TEXT, " +
-                        "correu TEXT)");
+                "usu_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "nom TEXT, " +
+                "correu TEXT)");
         db.execSQL("CREATE TABLE vpuntuacions2 ( " +
-                        "punts_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "punts INTEGER, " +
-                        "data LONG, " +
-                        "usuari INTEGER, " +
+                "punts_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "punts INTEGER, " +
+                "data LONG, " +
+                "usuari INTEGER, " +
                 "FOREIGN KEY(usuari) REFERENCES usuaris(usu_id))");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // En el cas d'una nova versió hauriem d'actualitzar les taules
+        db.execSQL("CREATE TABLE usuaris ( " +
+                "usu_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "nom TEXT, " +
+                "correu TEXT)");
+        db.execSQL("CREATE TABLE vpuntuacions2 ( " +
+                "punts_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "punts INTEGER, " +
+                "data LONG, " +
+                "usuari INTEGER, " +
+                "FOREIGN KEY(usuari) REFERENCES usuaris(usu_id))");
+        // Creem els usuaris
+        Cursor cursor = db.rawQuery("SELECT _id, nom from vpuntuacions group by _id", null);
+        while(cursor.moveToNext()){
+            String nom = cursor.getString(1).toLowerCase();
+            String correu = nom.charAt(0)+"@iesjoanramis.org";
+            db.execSQL("INSERT INTO usuaris VALUES ("+cursor.getInt(0)+",'"+cursor.getString(1)+"','"+correu+"')");
+        }
+        // Afegim les puntuacions
+        cursor = db.rawQuery("SELECT _id, punts, data from vpuntuacions", null);
+        while(cursor.moveToNext()){
+            Date date = new Date(cursor.getLong(2));
+            String data_str = date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+            db.execSQL("INSERT INTO vpuntuacions2 VALUES (null,"+cursor.getInt(1)+",'"+data_str +"',"+cursor.getInt(0)+")");
+        }
     }
 
     @Override
@@ -45,7 +69,6 @@ public class MagatzemPuntuacionsSQLiteRelacional extends SQLiteOpenHelper implem
         // INSERT INTO nom_taula VALUES (valor1, valor2, ... )
         // Els valors cadena van entre cometes;
         String correu = nom.toLowerCase().charAt(0)+"@iesjoanramis.org";
-        data = System.currentTimeMillis();
         Date date = new Date(data);
         String data_str = date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
 
