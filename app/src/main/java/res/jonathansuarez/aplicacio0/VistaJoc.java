@@ -139,7 +139,6 @@ public class VistaJoc extends View implements SensorEventListener {
             drawableMissil = context.getResources().getDrawable(R.drawable.missil1);
         }
         nau = new Grafic(this, drawableNau);
-        // missil = new Grafic(this, drawableMissil);
         asteroides=new Vector<Grafic>();
         for (int i=0; i<numAsteroides; i++) {
             Grafic asteroide = new Grafic(this, drawableAsteroide[0/*(int)(Math.random()*drawableAsteroide.length)*/]);
@@ -190,7 +189,7 @@ public class VistaJoc extends View implements SensorEventListener {
         for(int i = 0; i<missils.size(); i++){
             missils.get(i).incrementaPos(retard);
             tempsMissils.set(i, new Double(tempsMissils.get(i) - retard).intValue());
-            if(tempsMissils.get(i) < 0){ //canviar a get(i).intValue()<0
+            if(tempsMissils.get(i) < 0){
                 missils.remove(i);
                 tempsMissils.remove(i);
             } else {
@@ -206,6 +205,7 @@ public class VistaJoc extends View implements SensorEventListener {
         // Si un asteroide choca amb la nau finalitzar joc.
         for (Grafic asteroide:asteroides) {
             if (asteroide.verificaColisio(nau)) {
+                estat = ESTAT_DERROTA;
                 sortir();
             }
         }
@@ -275,6 +275,8 @@ public class VistaJoc extends View implements SensorEventListener {
         // Mostra la vista de Victoria
         if (estat == ESTAT_VICTORIA) {
             vistaVictoria.setVisibility(VISIBLE);
+        } else if (estat == ESTAT_DERROTA) {
+            vistaDerrota.setVisibility(VISIBLE);
         }
     }
 

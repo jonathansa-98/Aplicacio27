@@ -19,4 +19,14 @@
         android:textColorLink="#FF0000"
         android:textSize="35sp"
         android:visibility="invisible"/>
+    <TextView
+        android:id="@+id/Derrota"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#7F000000"
+        android:gravity="center"
+        android:text="! Has Perdut !"
+        android:textColorLink="#FF0000"
+        android:textSize="35sp"
+        android:visibility="invisible"/>
 </FrameLayout>

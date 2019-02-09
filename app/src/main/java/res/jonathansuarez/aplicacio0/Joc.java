@@ -16,6 +16,7 @@ public class Joc extends Activity {
         setContentView(R.layout.joc);
         vistaJoc = (VistaJoc) findViewById(R.id.VistaJoc);
         vistaJoc.setVistaVictoria(findViewById(R.id.Victoria));
+        vistaJoc.setVistaDerrota(findViewById(R.id.Derrota));
         vistaJoc.setPare(this);
     }
 
