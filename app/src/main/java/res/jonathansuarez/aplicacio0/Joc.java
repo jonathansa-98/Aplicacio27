@@ -14,7 +14,8 @@ public class Joc extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.joc);
-        vistaJoc = findViewById(R.id.VistaJoc);
+        vistaJoc = (VistaJoc) findViewById(R.id.VistaJoc);
+        vistaJoc.setVistaVictoria(findViewById(R.id.Victoria));
         vistaJoc.setPare(this);
     }
 

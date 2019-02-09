@@ -56,13 +56,12 @@ public class VistaJoc extends View implements SensorEventListener {
     //variable pel Missil
     private Grafic missil;
     private static int PAS_VELOCITAT_MISSIL=12;
-    //private boolean missilActiu=false;
-    //private int tempsMissil;
     private List<Integer> tempsMissils = new ArrayList<Integer>();
     private List<Boolean> missilsActiu = new ArrayList<Boolean>();
     private List<Grafic> missils = new ArrayList<Grafic>();
     private int numMissils = 20;
     private static int missilActual = 0;
+    // grafics de asteroides
     private Drawable[] drawableAsteroide = new Drawable[3];
 
     // variables pel so
@@ -74,6 +73,14 @@ public class VistaJoc extends View implements SensorEventListener {
     // variable que conte la puntuacio del joc
     private int puntuacio = 0;
     private Activity pare;
+
+    // Variables que indiquen l'estat del joc
+    public static final int ESTAT_JUGANT = 0;
+    public static final int ESTAT_VICTORIA = 1;
+    public static final int ESTAT_DERROTA = 2;
+    private int estat = ESTAT_JUGANT;
+    private View vistaVictoria;
+    private View vistaDerrota;
 
     public VistaJoc(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -124,13 +131,6 @@ public class VistaJoc extends View implements SensorEventListener {
                 setBackgroundColor(Color.BLACK);
                 drawableAsteroide[i] = dAsteroide;
             }
-            //Gràfic vectorial Missil
-            /*ShapeDrawable dMissil = new ShapeDrawable(new RectShape());
-            dMissil.getPaint().setColor(Color.WHITE);
-            dMissil.getPaint().setStyle(Paint.Style.STROKE);
-            dMissil.setIntrinsicWidth(15);
-            dMissil.setIntrinsicHeight(3);
-            drawableMissil=dMissil;*/
         } else{
             drawableAsteroide[0] = context.getResources().getDrawable(R.drawable.asteroide1);
             drawableAsteroide[1] = context.getResources().getDrawable(R.drawable.asteroide2);
@@ -266,14 +266,15 @@ public class VistaJoc extends View implements SensorEventListener {
     synchronized protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         nau.dibuixaGrafic(canvas);
-        /*if (missilActiu){
-            missil.dibuixaGrafic(canvas);
-        }*/
         for(Grafic missil: missils){
             missil.dibuixaGrafic(canvas);
         }
         for (Grafic asteroide:asteroides){
             asteroide.dibuixaGrafic(canvas);
+        }
+        // Mostra la vista de Victoria
+        if (estat == ESTAT_VICTORIA) {
+            vistaVictoria.setVisibility(VISIBLE);
         }
     }
 
@@ -342,6 +343,9 @@ public class VistaJoc extends View implements SensorEventListener {
         }
         // Si no queda cap asteroide en pantalla finalitzar partida
         if (asteroides.isEmpty()) {
+            // Actualitza l'estat de la partida a Victoria
+            estat = ESTAT_VICTORIA;
+            // Si no queda cap asteroide en pantalla finalitzar partida
             sortir();
         }
     }
@@ -412,6 +416,15 @@ public class VistaJoc extends View implements SensorEventListener {
         Intent intent = new Intent();
         intent.putExtras(bundle);
         pare.setResult(Activity.RESULT_OK, intent);
-        pare.finish();
+        // pare.finish();
+    }
+
+    // Mètodes que indiquen la vista a mostrar quan acaba la partida
+    public void setVistaDerrota(View vista) {
+        vistaDerrota = vista;
+    }
+
+    public void setVistaVictoria(View vista) {
+        vistaVictoria = vista;
     }
 }
