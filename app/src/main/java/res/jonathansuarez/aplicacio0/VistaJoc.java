@@ -232,7 +232,9 @@ public class VistaJoc extends View implements SensorEventListener {
         public void run() {
             corrent = true;
             while (corrent) {
-                actualitzaFisica();
+                if(estat == ESTAT_JUGANT) {
+                    actualitzaFisica();
+                }
                 synchronized (this) {
                     while (pausa){
                         try {
@@ -285,35 +287,41 @@ public class VistaJoc extends View implements SensorEventListener {
     @Override
     public boolean onTouchEvent(MotionEvent mevent) {
         super.onTouchEvent(mevent);
-        float x = mevent.getX();
-        float y = mevent.getY();
-        switch (mevent.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                dispar=true;
-                break;
-            case MotionEvent.ACTION_MOVE:
-                float dx = Math.abs(x-mX);
-                float dy = Math.abs(y-mY);
-                if (dy<6 && dx>6) {
-                    //s'activa el gir si esta la opcio tactil esta activat en la configuració.
-                    if (pref.getString(getResources().getString(R.string.pa7_key), "0").equals("0")) {
-                        girNau = Math.round((x - mX) / 2);
+        if(estat == ESTAT_JUGANT) {
+            float x = mevent.getX();
+            float y = mevent.getY();
+            switch (mevent.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    dispar = true;
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    float dx = Math.abs(x - mX);
+                    float dy = Math.abs(y - mY);
+                    if (dy < 6 && dx > 6) {
+                        //s'activa el gir si esta la opcio tactil esta activat en la configuració.
+                        if (pref.getString(getResources().getString(R.string.pa7_key), "0").equals("0")) {
+                            girNau = Math.round((x - mX) / 2);
+                            dispar = false;
+                        }
+                    } else if (dx < 6 && dy > 6) {
+                        acceleracioNau = Math.round((mY - y) / 25);
                         dispar = false;
                     }
-                } else if (dx<6 && dy>6) {
-                    acceleracioNau = Math.round((mY-y)/25);
-                    dispar = false;
-                }
-                break;
-            case MotionEvent.ACTION_UP:
-                girNau = 0;
-                acceleracioNau = 0;
-                if (dispar) {
-                    ActivaMissil();
-                }
-                break;
+                    break;
+                case MotionEvent.ACTION_UP:
+                    girNau = 0;
+                    acceleracioNau = 0;
+                    if (dispar) {
+                        ActivaMissil();
+                    }
+                    break;
+            }
+            mX = x;
+            mY = y;
+        } else {
+            // Surt del joc en la pantalla de resultat (Victoria/Derrota)
+            pare.finish();
         }
-        mX=x; mY=y;
         return true;
     }
 
@@ -385,14 +393,16 @@ public class VistaJoc extends View implements SensorEventListener {
     // GESTIO D'EVENTS DE SENSORS PER LA NAU
     @Override
     public void onSensorChanged(SensorEvent event) {
-        //s'activa el gir si esta activat la opcio de gir a la configuració.
-        if (pref.getString(getResources().getString(R.string.pa7_key), "1").equals("1")) {
-            float valor = event.values[1]; // eix Y
-            if (!hihaValorInicial) {
-                valorInicial = valor;
-                hihaValorInicial = true;
+        if(estat == ESTAT_JUGANT) {
+            //s'activa el gir si esta activat la opcio de gir a la configuració.
+            if (pref.getString(getResources().getString(R.string.pa7_key), "1").equals("1")) {
+                float valor = event.values[1]; // eix Y
+                if (!hihaValorInicial) {
+                    valorInicial = valor;
+                    hihaValorInicial = true;
+                }
+                girNau = (int) (valor - valorInicial) / 3;
             }
-            girNau = (int) (valor - valorInicial) / 3;
         }
     }
 
