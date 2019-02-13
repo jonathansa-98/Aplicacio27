@@ -1,7 +1,9 @@
 package res.jonathansuarez.aplicacio0;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.gesture.Gesture;
@@ -12,6 +14,7 @@ import android.gesture.Prediction;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +22,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +46,10 @@ public class MainActivity extends Activity implements View.OnClickListener, View
 
     // Preferencies
     private SharedPreferences pref;
+
+    // puntuacions
+    private String nom;
+    private int puntuacio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -276,12 +284,42 @@ public class MainActivity extends Activity implements View.OnClickListener, View
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1234 && resultCode == RESULT_OK && data != null) {
-            int puntuacio = data.getExtras().getInt("puntuacio");
-            String nom = "Jo";
+            puntuacio = data.getExtras().getInt("puntuacio");
+            // nom = "Jo";
             // Millor si ho llegim des d'un dialeg o una nova activitat
             // AlertDialog.Builder
-            magatzem.guardarPuntuacio(puntuacio, nom, System.currentTimeMillis());
-            llancarPuntuacions(null);
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Usuario");
+            builder.setMessage("Escriu el teu nom d'usuari.");
+            final EditText entrada = new EditText(MainActivity.this);
+            entrada.setText("Jo");
+            entrada.setInputType(InputType.TYPE_CLASS_TEXT);
+            builder.setView(entrada);
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    nom = entrada.getText().toString();
+                    if (nom.isEmpty()){
+                        nom = "Jo";
+                    }
+                    // guardar puntuacio
+                    magatzem.guardarPuntuacio(puntuacio, nom, System.currentTimeMillis());
+                    llancarPuntuacions(null);
+                }
+            });
+            builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    nom = entrada.getText().toString();
+                    if (nom.isEmpty()){
+                        nom = "Jo";
+                    }
+                    // guardar puntuacio
+                    magatzem.guardarPuntuacio(puntuacio, nom, System.currentTimeMillis());
+                    llancarPuntuacions(null);
+                }
+            });
+            builder.show();
         }
     }
 
