@@ -123,6 +123,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
             case 7: return new MagatzemPuntuacionsSQLite(MainActivity.this);
             case 8: return new MagatzemPuntuacionsSQLiteRelacional(MainActivity.this);
             case 9: return new MagatzemPuntuacionsProvider(MainActivity.this);
+            case 10: return new MagatzemPuntuacionsSocket();
         }
         return new MagatzemPuntuacionsArray();
     }
