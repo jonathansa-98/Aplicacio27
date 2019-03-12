@@ -64,9 +64,9 @@ public class ServeiMusica extends Service {
         reproductor.stop();
 
         // Elimina la notificacio si el servei deixa d'estar actiu.
-        /*NotificationManager nm;
+        NotificationManager nm;
         nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        nm.cancel(ID_NOTIFICACIO_CREAR);*/
+        nm.cancel(ID_NOTIFICACIO_CREAR);
     }
 
     @Nullable

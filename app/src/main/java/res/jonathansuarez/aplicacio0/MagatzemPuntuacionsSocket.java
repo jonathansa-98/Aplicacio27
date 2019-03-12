@@ -66,12 +66,9 @@ public class MagatzemPuntuacionsSocket implements MagatzemPuntuacions {
 
     private class LlistaSocketAsynTask extends AsyncTask<Object, Void, Vector<String>> {
 
-        Vector<String> puntuacions;
-
         @Override
         protected Vector<String> doInBackground(Object... objects) {
-            Vector<String> result = (Vector<String>) objects[0];
-            puntuacions = result;
+            Vector<String> puntuacions = (Vector<String>) objects[0];
             int quantitat = (int)objects[1];
             try {
                 // Realitza connexió
@@ -87,7 +84,7 @@ public class MagatzemPuntuacionsSocket implements MagatzemPuntuacions {
                 do {
                     resposta = entrada.readLine();
                     if (resposta!=null) {
-                        result.add(resposta);
+                        puntuacions.add(resposta);
                         n++;
                     }
                 } while (n < quantitat && resposta!=null);

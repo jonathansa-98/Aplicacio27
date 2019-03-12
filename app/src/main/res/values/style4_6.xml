@@ -3,21 +3,25 @@
     <!-- 4_6 theme dark. -->
     <style name="tema_aplicacio" parent="android:Theme.Material.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:background">#373f4c</item>
-        <item name="android:textColor">#0ff0f0</item>
-        <item name="android:textColorPrimary">#ffffff</item>
-        <item name="android:textColorSecondary">#ffffff</item>
-        <item name="android:textColorTertiary">#38ffaf</item>
-        <item name="android:textColorLink">#44c0ff</item>
-        <item name="android:textColorHint">#ffffff</item>
-        <item name="android:textColorPrimaryInverse">#def2fc</item>
-        <item name="android:textColorSecondaryInverse">#def2fc</item>
-        <item name="android:textColorTertiaryInverse">#def2fc</item>
-        <item name="android:textColorLinkInverse">#767dbc</item>
-        <item name="android:textColorHintInverse">#ababad</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:textColorTertiary">@color/aquamarine</item>
+        <item name="android:textColorLink">@color/lightBlue</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColorPrimaryInverse">@color/white</item>
+        <item name="android:textColorSecondaryInverse">@color/white</item>
+        <item name="android:textColorTertiaryInverse">@color/white</item>
+        <item name="android:textColorLinkInverse">@color/cyan</item>
+        <item name="android:textColorHintInverse">@color/grey</item>
+        <item name="android:dialogTheme">@style/DialogStyle</item>
+        <item name="android:alertDialogTheme">@style/DialogStyle</item>
     </style>
     <style name="tema_aplicacio.btn" parent="android:Theme.Material.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="android:textColor">#0f16c6</item>
+        <item name="android:textColor">@color/darkBlue</item>
+    </style>
+    <style name="DialogStyle" parent="android:Theme.Material.Dialog">
+        <item name="android:colorAccent">@color/colorAccent</item>
     </style>
 </resources>

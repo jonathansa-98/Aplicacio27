@@ -42,7 +42,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
     private Animation animacio_apareixer;
     private Animation animacio_desplaca_dreta;
     private GestureLibrary llibreria;
-    // private MediaPlayer mp;
+    private MediaPlayer mp;
 
     // Preferencies
     private SharedPreferences pref;
@@ -57,9 +57,10 @@ public class MainActivity extends Activity implements View.OnClickListener, View
         setContentView(R.layout.activity_main);
         pref = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         if (pref.getBoolean(getResources().getString(R.string.pa1_key), true)) {
-            startService(new Intent(MainActivity.this, ServeiMusica.class));
-            // mp = MediaPlayer.create(this, R.raw.cumbia);
+            // startService(new Intent(MainActivity.this, ServeiMusica.class));
+            mp = MediaPlayer.create(this, R.raw.cumbia);
         }
+
         titol= findViewById(R.id.titol);
         /*animacio_gir = AnimationUtils.loadAnimation(this, R.anim.gir_amb_zoom);
         titol.startAnimation(animacio_gir);*/
@@ -72,13 +73,6 @@ public class MainActivity extends Activity implements View.OnClickListener, View
         btnConfig= findViewById(R.id.button_config);
         btnConfig.setOnClickListener(this);
         btnConfig.setOnLongClickListener(this);
-        /*btnConfig.setOnLongClickListener(new View.OnLongClickListener() {
-             @Override
-             public boolean onLongClick(View v) {
-                 mostrarPreferencies(null);
-                 return true;
-             }
-         });*/
         /*animacio_desplaca_dreta = AnimationUtils.loadAnimation(this, R.anim.desplacament_dreta);
         btnConfig.startAnimation(animacio_desplaca_dreta);*/
 
@@ -132,12 +126,12 @@ public class MainActivity extends Activity implements View.OnClickListener, View
     protected void onResume() {
         super.onResume();
         if (pref.getBoolean(getResources().getString(R.string.pa1_key), true)) {
-            /*if (mp == null) {
+            if (mp == null) {
                 mp = MediaPlayer.create(this, R.raw.cumbia);
             }
             if (!mp.isPlaying()) {
                 mp.start();
-            }*/
+            }
         }
         //Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
     }
@@ -152,7 +146,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
     protected void onStop() {
         // Toast.makeText(this, "onStop", Toast.LENGTH_SHORT).show();
         if (pref.getBoolean(getResources().getString(R.string.pa1_key), true)) {
-            // mp.pause();
+            mp.pause();
         }
         super.onStop();
     }
@@ -167,7 +161,8 @@ public class MainActivity extends Activity implements View.OnClickListener, View
     protected void onDestroy() {
         // Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show();
         if (pref.getBoolean(getResources().getString(R.string.pa1_key), true)) {
-            stopService(new Intent(MainActivity.this, ServeiMusica.class));
+            // stopService(new Intent(MainActivity.this, ServeiMusica.class));
+            mp.stop();
         }
         super.onDestroy();
     }
@@ -356,8 +351,8 @@ public class MainActivity extends Activity implements View.OnClickListener, View
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         if (pref.getBoolean(getResources().getString(R.string.pa1_key), true)) {
-            // int pos = mp.getCurrentPosition();
-            // outState.putInt("pos", pos);
+            int pos = mp.getCurrentPosition();
+            outState.putInt("pos", pos);
         }
         super.onSaveInstanceState(outState);
     }
@@ -366,8 +361,8 @@ public class MainActivity extends Activity implements View.OnClickListener, View
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         if (pref.getBoolean(getResources().getString(R.string.pa1_key), true)) {
-            // int pos = savedInstanceState.getInt("pos");
-            // mp.seekTo(pos);
+            int pos = savedInstanceState.getInt("pos");
+            mp.seekTo(pos);
         }
     }
 }
