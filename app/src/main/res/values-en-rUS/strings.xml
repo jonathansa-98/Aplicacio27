@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Aplicacio0</string>
-    <string name="app_title">Aplication</string>
+    <string name="app_name">Asteroids</string>
+    <string name="app_title">Asteroids</string>
     <string name="btn_jugar">Play</string>
     <string name="btn_config">Settings</string>
     <string name="btn_acerca">About</string>
@@ -25,20 +25,20 @@
     <string name="pa3_title">Number of fragments</string>
     <string name="pa3_key">fragmentos</string>
     <string name="pa3_summary">How many fragments the asteroid divides</string>
-    <string name="pre_category_title">MODO MULTIJUGADOR</string>
+    <string name="pre_category_title">MULTIPLAYER MODE</string>
     <string name="pa4_key">multijugador</string>
-    <string name="pa4_title">Activar modo multijugador</string>
+    <string name="pa4_title">Activate multiplayer mode</string>
     <string name="pa5_key">max_jugadores</string>
-    <string name="pa5_title">Máximo de jugadores</string>
+    <string name="pa5_title">Maximum players</string>
     <string name="pa6_key">conexion</string>
-    <string name="pa6_title">Tipo de conexión</string>
-    <string name="layout_punt_subtitol">Altre texte</string>
-    <string name="pre_category2_title">MODO DE JUEGO</string>
+    <string name="pa6_title">Connexion type</string>
+    <string name="layout_punt_subtitol">score</string>
+    <string name="pre_category2_title">GAMEMODE</string>
     <string name="pa7_key">controles</string>
     <string name="pa7_summary">Change the controls of the game</string>
     <string name="pa7_title">Controls</string>
-    <string name="pre_category3_title">Modo de guardado</string>
+    <string name="pre_category3_title">Storage mode</string>
     <string name="pa8_key">guardado</string>
-    <string name="pa8_summary">Donde desea que las puntuaciones se guarden</string>
-    <string name="pa8_title">Guardado de puntuaciones</string>
+    <string name="pa8_summary">Where to store the scores</string>
+    <string name="pa8_title">Store scores</string>
 </resources>

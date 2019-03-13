@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Aplicacio0</string>
-    <string name="app_title">Aplicació</string>
+    <string name="app_name">Asteroids</string>
+    <string name="app_title">Asteroids</string>
     <string name="btn_jugar">Jugar</string>
     <string name="btn_config">Configurar</string>
     <string name="btn_acerca">Sobre</string>
