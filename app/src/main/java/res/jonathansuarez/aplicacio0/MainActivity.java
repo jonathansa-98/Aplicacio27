@@ -37,7 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
     private Button bSortir;
     public static MagatzemPuntuacions magatzem;
 
-    // Animacio
+    // Animacion
     private Animation animacio_gir;
     private Animation animacio_apareixer;
     private Animation animacio_desplaca_dreta;
