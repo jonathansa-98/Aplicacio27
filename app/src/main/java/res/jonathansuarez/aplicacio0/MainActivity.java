@@ -47,7 +47,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
     // Preferencies
     private SharedPreferences pref;
 
-    // puntuacions
+    // Puntuacions
     private String nom;
     private int puntuacio;
 
